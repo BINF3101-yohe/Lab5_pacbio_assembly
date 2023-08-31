@@ -14,4 +14,22 @@ You can think of a **kmer** as being the length of the word you are going to use
 
 The kmer length can impact how well the genome assembly works, so we want to figure that out first
 
+To determine kmer lenght we will use **kmergenie**
 
+kmergenie _is not_ already installed on the computing cluster so we will need to do that first. Luckily, this program comes in a neat package called an Anaconda Environment. 
+
+### Step 1a - Activiate anaconda
+
+Type this command to activate anaconda
+
+```bash
+module load anaconda3
+```
+
+### Step 1b - Install the kmergenie package
+
+```bash
+conda create -n kmergenie_env -c bioconda kmergenie
+```
+
+A bunch of 
