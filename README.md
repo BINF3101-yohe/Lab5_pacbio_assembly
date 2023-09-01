@@ -132,7 +132,7 @@ Refer to lab #1 if you need help remembering how to edit a file using vi or nano
 
 You can also check to make sure your edits are correct using ```cat abyss.slurm```
 
-### Steb 3c - Submit your slurm script
+### Step 3c - Submit your slurm script
 
 Submit your slurm script 
 
@@ -146,7 +146,39 @@ Then you can check to make sure it is running using
 squeue -u unccusername
 ```
 
-## Step 4 - 
+When the assembly is done you will see a file called "slurm-number.out" that will be the report of the run
+
+You will also see a lot of files that end in dot, path, fa, hist, fai, dot1 and more
+
+Our assembly is in this file: SRR6475892-**contigs.fa**
+
+### Step 3d - Make a copy of your final file and rename it
+
+Abyss leaves us with a complicated set of files which have aliases (additional names)
+
+To prevent any issues we are going to make a copy 
+
+```bash
+cp SRR6475892-contigs.fa SRR6475892-contigs.v1.fa
+```
+
+## Step 4 - Analyze our genome quality 
+
+We are going to use a program called QUAST to assess our genome quality. Quast does not like the packages we previously loaded. So you can either log out of the cluster and log back in OR we can leave the bubble
+
+To reset our terminal we will need to unload our anaconda environment
+
+```bash
+conda deactivate
+```
+
+Then we want to unload all of our modules
+
+```bash
+module purge
+```
+
+**TIP** The module purge command is very useful. It's a good idea to run it if you are having problems with 
 
 
 
