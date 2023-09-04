@@ -14,9 +14,11 @@
 
 [Step 4 - Analyze our genome quality](#step-4---analyze-our-genome-quality)
 
-[Lab Question 2](#lq 2)
+[Lab Question 2](#lq-2)
 
 [Step 5 - Filter the small contigs from our genome](#step-5---filter-the-small-contigs-from-our-genome)
+
+[Lab Question 3](#lq-3)
 
 ## Introduction
 
@@ -269,6 +271,10 @@ Now we will filter the genome to remove contigs that are less than 500bp long.
 ```
 
 Don't forget! You will need to change the larger number to your biggest contig size. 
+
+## LQ 3
+
+How many contigs (sequences) are in the final version of your genome? _Hint: we have used grep to count this in the past_
 
 ## Assembled genome!
 
