@@ -181,7 +181,63 @@ module purge
 **TIP** The module purge command is very useful. It's a good idea to run it if you are having problems with 
 
 
+### Step 4a - load the genome quality assessment program
+
+We will be using Quast to look at our genome quality. It is already installed on the cluster, so we need to load the module
+
+```bash
+module load quast
+```
+
+### Step 4b - Analyze your genome quality
+
+To run quast on our genome assembly use the command below
+
+```bash
+quast.py SRR6475892-contigs.v1.fa
+```
 
 
+### Step 4c - Look at our genome quality results
+
+You will find the genome quality results in a folder called ```quast_results```
+
+Within that folder, there will be additional folders for each analysis you have run (if you ran it more than once) labeled by the date. 
+
+Quast provides us with graphics and text output. If you want to look at the plots they are in the ```basic_stats``` folder and you will need to download them to look at this. 
+
+All our results are saved in a file called ```results.txt```
+
+Navigate into the folder containing your results and open/cat the report.txt file
 
 
+## Step 5 - Filter the small contigs from our genome 
+
+In the Quast output you should see a line that says "All statistics are based on contigs of size >= 500 bp". We want to remove the small contigs from our genome. We will use a custom python script to do that
+
+### Step 5a - Copy the script from the class folder
+
+Copy the script from the class folder
+```bash
+cp /projects/class/binf3101_001/filter_by_length.py .
+```
+
+This will copy the script to your current directory
+
+### Step 5b - Find largest contig size
+
+You will need to look at your Quast results and **find the size of your largest contig**
+
+### Step 5c - Filter your genome
+
+Now we will filter the genome to remove contigs that are less than 500bp long. 
+
+```bash
+ python filter_by_length.py SRR6475892-contigs.v1.fa SRR6475892-contigs.v2.fa 500 **294944**
+```
+
+Don't forget! You will need to change the larger number to your biggest contig size. 
+
+## Assembled genome!
+
+You now have now conducted a _de novo_ genome assembly directly from Illumina sequencing reads! Your genome is now saved in SRR6475892-contigs.v2.fa
