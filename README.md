@@ -1,5 +1,25 @@
 # Lab3_de_novo_assembly_part2
 
+# Outline
+
+[Introduction](#introduction)
+
+[Step 1 - Create a clean folder to work in](#step-1---create-a-clean-folder-to-work-in)
+
+[Step 2 - Identify kmer length](#step-2---identify-kmer-length)
+
+[Lab Question 1](#lq-1)
+
+[Step 3 - Assemble your genome](#step-3---assemble-your-genome)
+
+[Step 4 - Analyze our genome quality](#step-4---analyze-our-genome-quality)
+
+[Lab Question 2](#lq 2)
+
+[Step 5 - Filter the small contigs from our genome](#step-5---filter-the-small-contigs-from-our-genome)
+
+## Introduction
+
 Last lab we downloaded the raw sequencing reads for a species of budding yeast. Then we trimmed the reads to remove adaptor sequences and any other reads that were low quality. 
 
 We now need to assemble those DNA fragments into a genome assembly. Most of the species you are studying _have never been sequenced before!_ Therefore we need to do a _de novo_ assembly. We will go over what that means more in depth in class. Briefly, we need to find overlapping reads and put them together like a puzzle. 
@@ -107,6 +127,10 @@ You will get a printout from you run that contains your optimal k-mer size. Writ
 
 ![image](https://github.com/BINF-3101/Lab3_de_novo_assembly_part2/assets/47755288/e16a4883-1e12-4f6d-a3ea-458546df2f12)
 
+## LQ 1
+
+What k-mer size was chosen for you by kmergenie?
+
 &nbsp;
 ## Step 3 - Assemble your genome
 
@@ -210,6 +234,14 @@ All our results are saved in a file called ```results.txt```
 
 Navigate into the folder containing your results and open/cat the report.txt file
 
+
+## LQ 2
+
+Report the following genome statistics in the Canvas assignment
+- contigs under 1000 bp ( contigs (>= 0b bp) )
+- size of the largest contig
+- total length of the genome
+- N50 value
 
 ## Step 5 - Filter the small contigs from our genome 
 
