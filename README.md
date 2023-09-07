@@ -232,7 +232,7 @@ Within that folder, there will be additional folders for each analysis you have 
 
 Quast provides us with graphics and text output. If you want to look at the plots they are in the ```basic_stats``` folder and you will need to download them to look at this. 
 
-All our results are saved in a file called ```results.txt```
+All our results are saved in a file called ```report.txt```
 
 Navigate into the folder containing your results and open/cat the report.txt file
 
