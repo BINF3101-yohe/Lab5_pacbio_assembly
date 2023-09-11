@@ -266,8 +266,11 @@ You will need to look at your Quast results and **find the size of your largest 
 
 Now we will filter the genome to remove contigs that are less than 500bp long. 
 
+**If you are getting "cannot import matplotlib" you must load anaconda3**
+
 ```bash
- python filter_by_length.py SRR6475892-contigs.v1.fa SRR6475892-contigs.v2.fa 500 **294944**
+module load anaconda3
+python filter_by_length.py SRR6475892-contigs.v1.fa SRR6475892-contigs.v2.fa 500 **294944**
 ```
 
 Don't forget! You will need to change the larger number to your biggest contig size. 
