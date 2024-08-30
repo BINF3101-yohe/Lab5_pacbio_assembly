@@ -32,17 +32,17 @@ We now need to assemble those DNA fragments into a genome assembly. Most of the 
 &nbsp;
 ## Step 1 - Create a clean folder to work in
 
-You may have made a new folder for lab2 or you may have worked in your home directory. This time let's create a new folder and copy our sequences into that folder
+You may have made a new folder for lab2 or you may have worked in your home directory. This time, let's create a new folder and copy our sequences into that folder
 
 ```bash
 mkdir lab_3
 ```
 
-Then copy your processed read files into the lab_3 directory. If you saved yours somewhere else you should amend this command
+Then copy your processed read files into the lab_3 directory. If you saved yours somewhere else, you should amend this command.
 
 ```bash
-cp lab_2/SRR6475892/SRR6475892_1_paired.fastq.gz lab_3/.
-cp lab_2/SRR6475892/SRR6475892_2_paired.fastq.gz lab_3/.
+cp lab_2/SRRXXXXXXX/SRRXXXXXXX_1_paired.fastq.gz lab_3/.
+cp lab_2/SRRXXXXXXX/SRRXXXXXXX_2_paired.fastq.gz lab_3/.
 ```
 This may take a second. Once it is done, navigate into the lab_3 directory using ```cd```
 &nbsp;
@@ -50,69 +50,21 @@ This may take a second. Once it is done, navigate into the lab_3 directory using
 
 The first step in our genome assembly is to identify what **kmer** length we will be using
 
-You can think of a **kmer** as being the length of the word you are going to use to find matches while building your puzzle. We are going to go over this more carefully in class as well 
+You can think of a **kmer** as being the length of the word you are going to use to find matches while building your puzzle. We are going to go over this more carefully in class as well. 
 
 The kmer length can impact how well the genome assembly works, so we want to figure that out first
 
-To determine kmer lenght we will use **kmergenie**
+To determine kmer length we will use **kmergenie**
 
-kmergenie _is not_ already installed on the computing cluster so we will need to do that first. Luckily, this program comes in a neat package called an Anaconda Environment. 
-
-### Step 2a - Activiate anaconda
-
-Type this command to activate anaconda
-
-```bash
-module load anaconda3
-```
-
-### Step 2b - Install the kmergenie package
-
-```bash
-conda create -n kmergenie_env -c bioconda kmergenie
-```
-
-You will then be prompted to Proceed with the installation
-
-**Type y and press enter**
-
-A bunch of packages will then be installed. It will look something like this:
-
-![image](https://github.com/BINF-3101/Lab3_de_novo_assembly_part2/assets/47755288/796669e6-64c6-4b8c-b57d-d5de1724b178)
+kmergenie _is not_ is installed in our class directory, so you will run it from there
 
 
-_What did we just do?_
-
-Often people will develop programs that require dependencies. Dependencies are _other_ programs required to run the final product. Keeping track of these dependencies can be difficult. 
-
-So, we built an "environment" that is a little bubble we can work in where all the necessary programs are installed. You need to "activate" our bubble. We will activate that bubble next. 
-
-### Step 2c - Activate our anaconda environment
-
-Whenever you want to open our environment you must have anaconda loaded.
-
-```bash
-module load anaconda3
-```
-
-Then activate the environment
-
-```bash
-conda activate kmergenie_env
-```
-
-You will see that we now have our conda environment bubble in parentheses before our terminal name. 
-
-![image](https://github.com/BINF-3101/Lab3_de_novo_assembly_part2/assets/47755288/4008f570-7423-4bc6-8492-cc0dee48bd8b)
-
-We only need to have this active when we are using kmergenie 
-
-### Step 2d - Run kmergenie
+### Step 2a - Run kmergenie
 
 This is the command to run kmergenie on our forward set of reads. We will only run it on the forward set as the optimal kmer is likely to be the same
 
 ```bash
-kmergenie SRR6475892_1_paired.fastq.gz -l 21 -k 121 -s 2 -o out_file.txt
+/projects/class/binf3101_001/kmergenie-1.7051/kmergenie SRRXXXXXXX_1_paired.fastq.gz -l 21 -k 121 -s 2 -o out_file.txt
 ```
 
 Here are what all of the options mean
@@ -123,7 +75,7 @@ Here are what all of the options mean
 
 This will take a moment! So take some time to review the next few steps 
 
-### Step 2e - Find our optimal k-mer size
+### Step 2b - Find our optimal k-mer size
 
 You will get a printout from you run that contains your optimal k-mer size. Write it down! You will need it for the next step. 
 
@@ -176,7 +128,7 @@ When the assembly is done you will see a file called "slurm-number.out" that wil
 
 You will also see a lot of files that end in dot, path, fa, hist, fai, dot1 and more
 
-Our assembly is in this file: SRR6475892-**contigs.fa**
+Our assembly is in this file: SRRXXXXXXX-**contigs.fa**
 
 ### Step 3d - Make a copy of your final file and rename it
 
@@ -185,7 +137,7 @@ Abyss leaves us with a complicated set of files which have aliases (additional n
 To prevent any issues we are going to make a copy 
 
 ```bash
-cp SRR6475892-contigs.fa SRR6475892-contigs.v1.fa
+cp SRRXXXXXXX-contigs.fa SRRXXXXXXX-contigs.v1.fa
 ```
 
 ## Step 4 - Analyze our genome quality 
@@ -220,7 +172,7 @@ module load quast
 To run quast on our genome assembly use the command below
 
 ```bash
-quast.py SRR6475892-contigs.v1.fa
+quast.py SRRXXXXXXX-contigs.v1.fa
 ```
 
 
@@ -270,7 +222,7 @@ Now we will filter the genome to remove contigs that are less than 500bp long.
 
 ```bash
 module load anaconda3
-python filter_by_length.py SRR6475892-contigs.v1.fa SRR6475892-contigs.v2.fa 500 **294944**
+python filter_by_length.py SRRXXXXXXX-contigs.v1.fa SRRXXXXXXX-contigs.v2.fa 500 **294944**
 ```
 
 Don't forget! You will need to change the larger number to your biggest contig size. 
@@ -281,4 +233,4 @@ How many contigs (sequences) are in the final version of your genome? _Hint: we 
 
 ## Assembled genome!
 
-You now have now conducted a _de novo_ genome assembly directly from Illumina sequencing reads! Your genome is now saved in SRR6475892-contigs.v2.fa
+You now have now conducted a _de novo_ genome assembly directly from Illumina sequencing reads! Your genome is now saved in SRRXXXXXXX-contigs.v2.fa
