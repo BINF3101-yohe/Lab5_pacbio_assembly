@@ -61,17 +61,18 @@ kmergenie _is not_ is installed in our class directory, so you will run it from 
 
 ### Step 2a - Run kmergenie
 
-This is the command to run kmergenie on our forward set of reads. We will only run it on the forward set as the optimal kmer is likely to be the same
+This is the command to run kmergenie on our forward set of reads. We will only run it on the forward set as the optimal kmer is likely to be the same. We will also need to activate the R programming language. 
 
 ```bash
-/projects/class/binf3101_001/kmergenie-1.7051/kmergenie SRRXXXXXXX_1_paired.fastq.gz -l 21 -k 121 -s 2 -o out_file.txt
+module load R
+/projects/class/binf3101_001/kmergenie-1.7051/kmergenie SRRXXXXXXX_1_paired.fastq.gz -l 21 -k 121 -s 2 -o out_file
 ```
 
 Here are what all of the options mean
 ```-l 21``` - smallest k-mer size to test
 ```-k 121``` - largest k-mer size to est
 ```-s 2``` - the interval to test k-mers at. We jump by 2 every time we test
-```-o kmergenie_SSR6475892``` prefix to all of our output files to help keep us organized
+```-o out_file``` prefix to all of our output files to help keep us organized. You can use your SRR number here too. 
 
 This will take a moment! So take some time to review the next few steps 
 
@@ -102,7 +103,7 @@ cp /projects/class/binf3101_001/abyss.slurm .
 
 ### Step 3b - Edit the slurm script
 
-You will need to edit the slurm script to include your k-mer number after "k=" and change SRRNUMBER to your SRR number
+You will need to edit the slurm script to include your k-mer number after "k=" and change SRXXXXXX to your SRR number
 
 ![image](https://github.com/BINF-3101/Lab3_de_novo_assembly_part2/assets/47755288/c1f4d46b-63ab-4753-a730-9ac82a80433a)
 
