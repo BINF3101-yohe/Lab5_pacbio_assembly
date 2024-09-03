@@ -127,7 +127,9 @@ squeue -u unccusername
 
 When the assembly is done you will see a file called "slurm-number.out" that will be the report of the run
 
-You will also see a lot of files that end in dot, path, fa, hist, fai, dot1 and more
+You will also see a lot of files that end in dot, path, fa, hist, fai, dot1 and more.
+
+This process can take between 10 and 20 minutes!
 
 Our assembly is in this file: SRRXXXXXXX-**contigs.fa**
 
@@ -145,13 +147,8 @@ cp SRRXXXXXXX-contigs.fa SRRXXXXXXX-contigs.v1.fa
 
 We are going to use a program called QUAST to assess our genome quality. Quast does not like the packages we previously loaded. So you can either log out of the cluster and log back in OR we can leave the bubble
 
-To reset our terminal we will need to unload our anaconda environment
+To reset our terminal, we will need to unload everything
 
-```bash
-conda deactivate
-```
-
-Then we want to unload all of our modules
 
 ```bash
 module purge
