@@ -228,7 +228,7 @@ Don't forget! You will need to change the larger number to your biggest contig s
 
 ## LQ 3
 
-How many contigs (sequences) are in the final version of your genome? _Hint: we have used grep to count this in the past_
+How many contigs (sequences) are in the final version of your genome? _Hint: This is printed out in the console or we have used grep to count this in the past_
 
 ## Assembled genome!
 
