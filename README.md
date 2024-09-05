@@ -46,6 +46,22 @@ cp lab_2/SRRXXXXXXX/SRRXXXXXXX_2_paired.fastq.gz lab_3/.
 ```
 This may take a second. Once it is done, navigate into the lab_3 directory using ```cd```
 &nbsp;
+
+
+**IMPORTANT NOTE - ADDED AFTER CLASS 9/5/24**
+
+When you copy over your files, they may appear RED when you type ls
+
+![image](https://github.com/user-attachments/assets/83f0f001-052e-4ab4-b0ef-2f31bf81ddbf)
+
+If you are colorblind - do this step anyway.
+
+You will need to use the command below to turn the files GREEN
+```
+chmod 777 SRRXXXXXX_1_paired.fastq.gz
+chmod 777 SRRXXXXXX_2_paired.fastq.gz
+```
+
 ## Step 2 - Identify kmer length
 
 The first step in our genome assembly is to identify what **kmer** length we will be using
