@@ -142,6 +142,8 @@ Then you can check to make sure it is running using
 squeue -u unccusername
 ```
 
+IF THIS STEP DOES NOT WORK - EMAIL Dr. LABELLA IMMEDIATELY! 
+
 When the assembly is done you will see a file called "slurm-number.out" that will be the report of the run
 
 You will also see a lot of files that end in dot, path, fa, hist, fai, dot1 and more.
@@ -237,7 +239,7 @@ Now we will filter the genome to remove contigs that are less than 500bp long.
 
 ```bash
 module load anaconda3
-python filter_by_length.py SRRXXXXXXX-contigs.v1.fa SRRXXXXXXX-contigs.v2.fa 500 **294944**
+python filter_by_length.py SRRXXXXXXX-contigs.v1.fa SRRXXXXXXX-contigs.v2.fa 500 NyourlargestN
 ```
 
 Don't forget! You will need to change the larger number to your biggest contig size. 
