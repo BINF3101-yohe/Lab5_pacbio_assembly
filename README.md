@@ -1,4 +1,4 @@
-# Lab3_de_novo_assembly_part2
+# Lab5_pacBio_assembly
 
 # Outline
 
@@ -26,25 +26,26 @@ Last lab we downloaded the raw sequencing reads for a species of budding yeast. 
 
 We now need to assemble those DNA fragments into a genome assembly. Most of the species you are studying _have never been sequenced before!_ Therefore we need to do a _de novo_ assembly. We will go over what that means more in depth in class. Briefly, we need to find overlapping reads and put them together like a puzzle. 
 
-![Assembly-768x360](https://github.com/alabella19/Lab3_de_novo_assembly_part2/assets/47755288/cfbf47dc-39f9-4aec-92e1-bc79e19e399b)
 
 
 &nbsp;
 ## Step 1 - Create a clean folder to work in
 
-You may have made a new folder for lab2 or you may have worked in your home directory. This time, let's create a new folder and copy our sequences into that folder
+Let's create a new folder and download our PacBio fastq fils into that folder
 
 ```bash
-mkdir lab_3
+mkdir lab_5
 ```
 
-Then copy your processed read files into the lab_3 directory. If you saved yours somewhere else, you should amend this command.
+Then fetch your read files in the lab_3 directory. If you saved yours somewhere else, you should amend this command.
 
 ```bash
-cp lab_2/SRRXXXXXXX/SRRXXXXXXX_1_paired.fastq.gz lab_3/.
-cp lab_2/SRRXXXXXXX/SRRXXXXXXX_2_paired.fastq.gz lab_3/.
+cd lab_5.
+wget https://zenodo.org/records/5702408/files/SRR8534473_subreads.fastq.gz.
+wget https://zenodo.org/records/5702408/files/SRR8534474_subreads.fastq.gz.
+wget https://zenodo.org/records/5702408/files/SRR8534475_subreads.fastq.gz
 ```
-This may take a second. Once it is done, navigate into the lab_3 directory using ```cd```
+This may take a few minutes. Once it is done, check the three have downloaded in the lab_5 directory using ```ls```
 &nbsp;
 
 
