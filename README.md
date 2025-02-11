@@ -40,40 +40,22 @@ mkdir lab_5
 Then fetch your read files in the lab_3 directory. If you saved yours somewhere else, you should amend this command.
 
 ```bash
-cd lab_5.
-wget https://zenodo.org/records/5702408/files/SRR8534473_subreads.fastq.gz.
-wget https://zenodo.org/records/5702408/files/SRR8534474_subreads.fastq.gz.
+cd lab_5
+wget https://zenodo.org/records/5702408/files/SRR8534473_subreads.fastq.gz
+wget https://zenodo.org/records/5702408/files/SRR8534474_subreads.fastq.gz
 wget https://zenodo.org/records/5702408/files/SRR8534475_subreads.fastq.gz
 ```
 This may take a few minutes. Once it is done, check the three have downloaded in the lab_5 directory using ```ls```
 &nbsp;
 
-
-**IMPORTANT NOTE - ADDED AFTER CLASS 9/5/24**
-
-When you copy over your files, they may appear RED when you type ls
-
-![image](https://github.com/user-attachments/assets/83f0f001-052e-4ab4-b0ef-2f31bf81ddbf)
-
-If you are colorblind - do this step anyway.
-
-You will need to use the command below to turn the files GREEN
+Give the files the correct permission if they are red.
 ```
-chmod 777 SRRXXXXXX_1_paired.fastq.gz
-chmod 777 SRRXXXXXX_2_paired.fastq.gz
+chmod 777 *gz
 ```
 
-## Step 2 - Identify kmer length
+## Step 2 - Run _do novo_ assembly with Flye
 
-The first step in our genome assembly is to identify what **kmer** length we will be using
-
-You can think of a **kmer** as being the length of the word you are going to use to find matches while building your puzzle. We are going to go over this more carefully in class as well. 
-
-The kmer length can impact how well the genome assembly works, so we want to figure that out first
-
-To determine kmer length we will use **kmergenie**
-
-kmergenie _is not_ is installed in our class directory, so you will run it from there
+Flye is designed for a wide range of datasets, from small bacterial projects to large mammalian-scale assemblies. The package represents a complete pipeline: it takes raw PacBio / ONT reads as input and outputs polished contigs. Flye also has a special mode for metagenome assembly. All informations about Flye assembler are here: [Flye]([url](https://github.com/fenderglass/Flye/)).
 
 
 ### Step 2a - Run kmergenie
