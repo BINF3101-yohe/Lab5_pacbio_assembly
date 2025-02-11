@@ -6,7 +6,7 @@
 
 [Step 1 - Create a clean folder to work in](#step-1---create-a-clean-folder-to-work-in)
 
-[Step 2 - Run _do novo_ assembly with Flye](#step-2---run-do-novo-assembly-with-flye))
+[Step 2 - Run _de novo_ assembly with Flye](#step-2---run-de-novo-assembly-with-flye))
 
 [Lab Question 1](#lq-1)
 
@@ -53,12 +53,12 @@ Give the files the correct permission if they are red.
 chmod 777 *gz
 ```
 
-## Step 2 - Run _do novo_ assembly with Flye
+## Step 2 - Run _de novo_ assembly with Flye
 
 Flye is designed for a wide range of datasets, from small bacterial projects to large mammalian-scale assemblies. The package represents a complete pipeline: it takes raw PacBio / ONT reads as input and outputs polished contigs. Flye also has a special mode for metagenome assembly. All informations about Flye assembler are here: [Flye]([url](https://github.com/fenderglass/Flye/)).
 
 
-### Step 2a - Edit the slurm script
+### Step 2a - Explore what flye can do.
 
 We are going to grow up into more advanced and independent bioinformaticians where I no longer give you the exact slurm script. Yay!
 
@@ -75,48 +75,59 @@ The relevant commands we need to include are ```--pac-bio-raw```, set the ```--i
 Make sure to include all three of your sets of reads in your command!
 
 
-### Step 2b - Find our optimal k-mer size
+### Step 2b - Edit the slurm script.
 
-You will get a printout from you run that contains your optimal k-mer size. Write it down! You will need it for the next step. 
+Edit ```flye.slurm``` included in the github here or make your own file by copying the base of the script below. 
+Refer to lab #1 if you need help remembering how to edit a file using vi or nano.
 
-![image](https://github.com/BINF-3101/Lab3_de_novo_assembly_part2/assets/47755288/e16a4883-1e12-4f6d-a3ea-458546df2f12)
+```
+#!/bin/bash 
+
+#SBATCH --partition=Centaurus
+#SBATCH --job-name=flye_job
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --time=4:00:00
+#SBATCH --mem-per-cpu=20G
+
+echo "======================================================"
+echo "Start Time  : $(date)"
+echo "Submit Dir  : $SLURM_SUBMIT_DIR"
+echo "Job ID/Name : $SLURM_JOBID : $SLURM_JOB_NAME"
+echo "Node List   : $SLURM_JOB_NODELIST"
+echo "Num Tasks   : $SLURM_NTASKS total [$SLURM_NNODES nodes @ $SLURM_CPUS_ON_NODE CPUs/node]"
+echo "======================================================"
+echo ""
+
+
+mkdir tmp
+export TMPDIR=$SLURM_SUBMIT_DIR/tmp
+
+module load flye
+cd $SLURM_SUBMIT_DIR
+
+#uncomment this line and put flye command here :)
+
+
+
+echo ""
+echo "======================================================"
+echo "End Time   : $(date)"
+echo "======================================================"
+```
+
 
 ## LQ 1
 
 What k-mer size was chosen for you by kmergenie?
 
 &nbsp;
-## Step 3 - Assemble your genome
-
-Now we will use a genome assembler called ABySS (Assembly By Short Sequences). We will go more into depth as to how this assembler works in class
-
-### Step 3a - Copy the slurm script
-
-Copy the slurm script from the class folder to your directory where you have the sequence files
-
-```bash
-cp /projects/class/binf3101_001/abyss.slurm .
-```
-
-**TIP** The "." in the command above means "here". You are copying (cp) the first file (/projects/class/binf3101_001/abyss.slurm) to here (.)
-
-### Step 3b - Edit the slurm script
-
-You will need to edit the slurm script to include your k-mer number after "k=" and change SRXXXXXX to your SRR number
-
-![image](https://github.com/user-attachments/assets/58dd1308-5db4-47d9-af28-8727f806c0fb)
-
-
-Refer to lab #1 if you need help remembering how to edit a file using vi or nano. 
-
-You can also check to make sure your edits are correct using ```cat abyss.slurm```
-
-### Step 3c - Submit your slurm script
+## Step 3 - Submit your slurm script
 
 Submit your slurm script 
 
 ```bash
-sbatch abyss.slurm
+sbatch flye.slurm
 ```
 
 Then you can check to make sure it is running using
@@ -133,7 +144,17 @@ You will also see a lot of files that end in dot, path, fa, hist, fai, dot1 and 
 
 This process can take between 10 and 20 minutes!
 
-Our assembly is in this file: SRRXXXXXXX-**contigs.fa**
+The tool produces four datasets: consensus, assembly graph, graphical fragment assembly and assembly info.
+
+The first dataset (consensus) is a fasta file containing the final assembly (1461 contigs). You may notice that the result (contigs number) you obtained is sligthy different from the one presented here. This is due to the Flye assembly algorithm which doesn’t always give the eact same results.
+
+The second and third dataset are assembly graph files. These graphs are used to represent the final assembly of a genome, they are based on reads and their overlap information. Some tools such as Bandage allow to visualize the assembly graph.
+
+The fourth dataset is a tabular file (assembly_info) containing extra information about contigs/scaffolds.
+
+Cool!
+
+Our assembly is in the fasta file of the "consensus" output.
 
 ### Step 3d - Make a copy of your final file and rename it
 
