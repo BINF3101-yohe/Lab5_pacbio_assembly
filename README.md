@@ -6,7 +6,7 @@
 
 [Step 1 - Create a clean folder to work in](#step-1---create-a-clean-folder-to-work-in)
 
-[Step 2 - Run _do novo_ assembly with Flye](#step-2---identify-kmer-length)
+[Step 2 - Run _do novo_ assembly with Flye](#step-2---run-do-novo-assembly-with-flye))
 
 [Lab Question 1](#lq-1)
 
