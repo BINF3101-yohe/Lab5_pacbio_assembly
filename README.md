@@ -58,22 +58,22 @@ chmod 777 *gz
 Flye is designed for a wide range of datasets, from small bacterial projects to large mammalian-scale assemblies. The package represents a complete pipeline: it takes raw PacBio / ONT reads as input and outputs polished contigs. Flye also has a special mode for metagenome assembly. All informations about Flye assembler are here: [Flye]([url](https://github.com/fenderglass/Flye/)).
 
 
-### Step 2a - Run kmergenie
+### Step 2a - Edit the slurm script
 
-This is the command to run kmergenie on our forward set of reads. We will only run it on the forward set as the optimal kmer is likely to be the same. We will also need to activate the R programming language. 
+We are going to grow up into more advanced and independent bioinformaticians where I no longer give you the exact slurm script. Yay!
 
+Inspect what flye is capable of and all of the available options.
 ```bash
-module load R
-/projects/class/binf3101_001/kmergenie-1.7051/kmergenie SRRXXXXXXX_1_paired.fastq.gz -l 21 -k 121 -s 2 -o out_file
+module load flye
+flye --help
 ```
+![Screenshot 2025-02-11 at 3 51 59 PM](https://github.com/user-attachments/assets/e8901795-2351-4955-b3f9-eca897e5c1c0)
 
-Here are what all of the options mean
-```-l 21``` - smallest k-mer size to test
-```-k 121``` - largest k-mer size to est
-```-s 2``` - the interval to test k-mers at. We jump by 2 every time we test
-```-o out_file``` prefix to all of our output files to help keep us organized. You can use your SRR number here too. 
+A lot, right?!
 
-This will take a moment! So take some time to review the next few steps 
+The relevant commands we need to include are ```--pac-bio-raw```, set the ```--iterations``` to "1", and set the output directory --iterations 1 ```--out-dir SRR853447_pacbio_assembly```.
+Make sure to include all three of your sets of reads in your command!
+
 
 ### Step 2b - Find our optimal k-mer size
 
