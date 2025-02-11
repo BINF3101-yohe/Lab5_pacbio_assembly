@@ -37,7 +37,7 @@ Let's create a new folder and download our PacBio fastq fils into that folder
 mkdir lab_5
 ```
 
-Then fetch your read files in the lab_3 directory. If you saved yours somewhere else, you should amend this command.
+Then fetch your read files in the lab_5 directory. If you saved yours somewhere else, you should amend this command.
 
 ```bash
 cd lab_5
