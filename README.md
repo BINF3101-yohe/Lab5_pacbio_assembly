@@ -66,6 +66,23 @@ How would I alter this command if I wanted to count the number of reads in all f
 Please submit the modified command.
 &nbsp;
 
+Let's see how different PacBio data is from Illumina data. Remember illumina data pretty much had 240-260bp length reads.
+
+Run the following commands on one of your fastq files.
+
+```
+awk 'NR%4 == 2 {lengths[length($0)]++} END {for (l in lengths) {print l, lengths[l]}}' SRR8534473_subreads.fastq.gz 
+```
+This is going to print a lot of output, but it will tell you the length of each read. Scroll to the top and see how long the longest read is. Pretty cool, right?! ;-)
+Even though there are less reads, many reads are much longer than 250bp!
+
+## LQ 2
+How many reads are in  SRR8534473_subreads.fastq.gz?
+What is the length of the longest read in SRR8534473_subreads.fastq.gz?
+
+&nbsp;
+
+
 ## Step 2 - Run _de novo_ assembly with Flye
 
 Flye is designed for a wide range of datasets, from small bacterial projects to large mammalian-scale assemblies. The package represents a complete pipeline: it takes raw PacBio / ONT reads as input and outputs polished contigs. Flye also has a special mode for metagenome assembly. All informations about Flye assembler are here: [Flye]([url](https://github.com/fenderglass/Flye/)).
@@ -130,7 +147,7 @@ echo "======================================================"
 ```
 
 
-## LQ 2
+## LQ 3
 
 What k-mer size was chosen for you by kmergenie?
 
