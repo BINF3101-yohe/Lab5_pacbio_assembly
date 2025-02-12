@@ -101,7 +101,7 @@ flye --help
 
 A lot, right?!
 
-The relevant commands we need to include are ```--pac-bio-raw```, set the ```--iterations``` to "1", and set the output directory --iterations 1 ```--out-dir SRR853447_pacbio_assembly```.
+The relevant commands we need to include are ```--pac-bio-raw```, set the ```--iterations``` to "1", and set the output directory as ```--out-dir SRR853447_pacbio_assembly```.
 Make sure to include all three of your sets of reads in your command!
 
 
