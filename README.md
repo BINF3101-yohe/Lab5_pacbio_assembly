@@ -85,7 +85,7 @@ What is the length of the longest read in SRR8534473_subreads.fastq.gz?
 
 ## Step 2 - Run _de novo_ assembly with Flye
 
-Flye is designed for a wide range of datasets, from small bacterial projects to large mammalian-scale assemblies. The package represents a complete pipeline: it takes raw PacBio / ONT reads as input and outputs polished contigs. Flye also has a special mode for metagenome assembly. All informations about Flye assembler are here: [Flye]([url](https://github.com/fenderglass/Flye/)).
+Flye is designed for a wide range of datasets, from small bacterial projects to large mammalian-scale assemblies. The package represents a complete pipeline: it takes raw PacBio / ONT reads as input and outputs polished contigs.
 
 
 ### Step 2a - Explore what flye can do.
@@ -149,7 +149,7 @@ echo "======================================================"
 
 ## LQ 3
 
-What k-mer size was chosen for you by kmergenie?
+Paste your command of your flye.slurm script for running ```flye```
 
 &nbsp;
 ## Step 3 - Submit your slurm script
