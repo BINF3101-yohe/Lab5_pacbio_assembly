@@ -53,6 +53,19 @@ Give the files the correct permission if they are red.
 chmod 777 *gz
 ```
 
+Always look at your data. Let's see how many reads are in these folders:
+The command to count the number of reads in a fastq file is as follows:
+
+```
+/projects/class/binf3101_001/count_fastq.sh SRR8534473_subreads.fastq.gz
+```
+
+## LQ 1
+
+How would I alter this command if I wanted to count the number of reads in all fastq.gz files in my folder?
+Please submit the modified command.
+&nbsp;
+
 ## Step 2 - Run _de novo_ assembly with Flye
 
 Flye is designed for a wide range of datasets, from small bacterial projects to large mammalian-scale assemblies. The package represents a complete pipeline: it takes raw PacBio / ONT reads as input and outputs polished contigs. Flye also has a special mode for metagenome assembly. All informations about Flye assembler are here: [Flye]([url](https://github.com/fenderglass/Flye/)).
@@ -117,7 +130,7 @@ echo "======================================================"
 ```
 
 
-## LQ 1
+## LQ 2
 
 What k-mer size was chosen for you by kmergenie?
 
