@@ -80,7 +80,7 @@ Make sure to include all three of your sets of reads in your command!
 Edit ```flye.slurm``` included in the github here or make your own file by copying the base of the script below. 
 Refer to lab #1 if you need help remembering how to edit a file using vi or nano.
 
-```
+```bash
 #!/bin/bash 
 
 #SBATCH --partition=Centaurus
