@@ -14,11 +14,8 @@
 
 [Step 4 - Analyze our genome quality](#step-4---analyze-our-genome-quality)
 
-[Lab Question 2](#lq-2)
 
-[Step 5 - Filter the small contigs from our genome](#step-5---filter-the-small-contigs-from-our-genome)
 
-[Lab Question 3](#lq-3)
 
 ## Introduction
 
@@ -147,11 +144,6 @@ echo "======================================================"
 ```
 
 
-## LQ 3
-
-Paste your command of your flye.slurm script for running ```flye```
-
-&nbsp;
 ## Step 3 - Submit your slurm script
 
 Submit your slurm script 
@@ -218,6 +210,7 @@ We will be using Quast to look at our genome quality. It is already installed on
 module load quast
 ```
 
+
 ### Step 4b - Analyze your genome quality
 
 To run quast on our genome assembly use the command below
@@ -235,26 +228,31 @@ Within that folder, there will be additional folders for each analysis you have 
 
 Quast provides us with graphics and text output. If you want to look at the plots they are in the ```basic_stats``` folder and you will need to download them to look at this. 
 
+
+## LQ3
+
+How many contigs assembled in the consensus?
+&nbsp;
+
 All our results are saved in a file called ```report.txt```
 
 Navigate into the folder containing your results and open/cat the report.txt file
 
 
-## LQ 5
+## LQ 4
 
 Report the following genome statistics in the Canvas assignment
 - contigs under 1000 bp ( contigs (>= 0b bp) )
 - size of the largest contig
 - total length of the genome
 - N50 value
-
-
+&nbsp;
 
 ## Assembled genome!
 
 You now have now conducted a _de novo_ genome assembly directly from PacBio sequencing reads! But whose genome was it?
 
-#LQ6
+## LQ 5
 Based on the SRA information.
 What sepecies genome did we sequence? What did you learn about its ecology?
 
