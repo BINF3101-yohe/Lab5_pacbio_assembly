@@ -117,8 +117,8 @@ Refer to lab #1 if you need help remembering how to edit a file using vi or nano
 #SBATCH --job-name=flye_job
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
-#SBATCH --time=4:00:00
-#SBATCH --mem-per-cpu=20G
+#SBATCH --time=48:00:00
+#SBATCH --mem-per-cpu=200G
 
 echo "======================================================"
 echo "Start Time  : $(date)"
@@ -166,13 +166,13 @@ Then you can check to make sure it is running using
 squeue -u unccusername
 ```
 
-IF THIS STEP DOES NOT WORK - EMAIL Dr. LABELLA IMMEDIATELY! 
 
-When the assembly is done you will see a file called "slurm-number.out" that will be the report of the run
 
-You will also see a lot of files that end in dot, path, fa, hist, fai, dot1 and more.
+This process will have to run over night. Be patient! Check to see its working or if it has crashed.
 
-This process can take between 10 and 20 minutes!
+```bash
+tail slurmXXX.out
+```
 
 The tool produces four datasets: consensus, assembly graph, graphical fragment assembly and assembly info.
 
@@ -193,7 +193,7 @@ Abyss leaves us with a complicated set of files which have aliases (additional n
 To prevent any issues we are going to make a copy 
 
 ```bash
-cp SRRXXXXXXX-contigs.fa SRRXXXXXXX-contigs.v1.fa
+cp consensus.fa consensus.v1.fa
 ```
 
 ## Step 4 - Analyze our genome quality 
@@ -223,7 +223,7 @@ module load quast
 To run quast on our genome assembly use the command below
 
 ```bash
-quast.py SRRXXXXXXX-contigs.v1.fa
+quast.py consesnus.fa
 ```
 
 
@@ -240,7 +240,7 @@ All our results are saved in a file called ```report.txt```
 Navigate into the folder containing your results and open/cat the report.txt file
 
 
-## LQ 2
+## LQ 5
 
 Report the following genome statistics in the Canvas assignment
 - contigs under 1000 bp ( contigs (>= 0b bp) )
@@ -248,40 +248,16 @@ Report the following genome statistics in the Canvas assignment
 - total length of the genome
 - N50 value
 
-## Step 5 - Filter the small contigs from our genome 
 
-In the Quast output you should see a line that says "All statistics are based on contigs of size >= 500 bp". We want to remove the small contigs from our genome. We will use a custom python script to do that
-
-### Step 5a - Copy the script from the class folder
-
-Copy the script from the class folder
-```bash
-cp /projects/class/binf3101_001/filter_by_length.py .
-```
-
-This will copy the script to your current directory
-
-### Step 5b - Find largest contig size
-
-You will need to look at your Quast results and **find the size of your largest contig**
-
-### Step 5c - Filter your genome
-
-Now we will filter the genome to remove contigs that are less than 500bp long. 
-
-**If you are getting "cannot import matplotlib" you must load anaconda3**
-
-```bash
-module load anaconda3
-python filter_by_length.py SRRXXXXXXX-contigs.v1.fa SRRXXXXXXX-contigs.v2.fa 500 NyourlargestN
-```
-
-Don't forget! You will need to change the larger number to your biggest contig size. 
-
-## LQ 3
-
-How many contigs (sequences) are in the final version of your genome? _Hint: This is printed out in the console or we have used grep to count this in the past_
 
 ## Assembled genome!
 
-You now have now conducted a _de novo_ genome assembly directly from Illumina sequencing reads! Your genome is now saved in SRRXXXXXXX-contigs.v2.fa
+You now have now conducted a _de novo_ genome assembly directly from PacBio sequencing reads! But whose genome was it?
+
+#LQ6
+Based on the SRA information.
+What sepecies genome did we sequence? What did you learn about its ecology?
+
+
+
+
