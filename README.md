@@ -68,9 +68,9 @@ Let's see how different PacBio data is from Illumina data. Remember illumina dat
 Run the following commands on one of your fastq files.
 
 ```
-awk 'NR%4 == 2 {lengths[length($0)]++} END {for (l in lengths) {print l, lengths[l]}}' SRR8534473_subreads.fastq.gz 
+/projects/class/binf3101_001/seqstats/seqstats SRR8534473_subreads.fastq.gz 
 ```
-This is going to print a lot of output, but it will tell you the length of each read. Scroll to the top and see how long the longest read is. Pretty cool, right?! ;-)
+Pretty cool, right?! ;-)
 Even though there are less reads, many reads are much longer than 250bp!
 
 ## LQ 2
