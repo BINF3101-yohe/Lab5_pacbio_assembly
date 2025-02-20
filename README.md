@@ -177,6 +177,10 @@ The fourth dataset is a tabular file (assembly_info) containing extra informatio
 Cool!
 
 Our assembly is in the fasta file of the "consensus" output.
+```bash
+cd 10-consensus
+#your assembly is "consensus.fasta"
+```
 
 ### Step 3d - Make a copy of your final file and rename it
 
@@ -185,7 +189,7 @@ Abyss leaves us with a complicated set of files which have aliases (additional n
 To prevent any issues we are going to make a copy 
 
 ```bash
-cp consensus.fa consensus.v1.fa
+cp consensus.fasta consensus.v1.fasta
 ```
 
 ## Step 4 - Analyze our genome quality 
@@ -216,7 +220,7 @@ module load quast
 To run quast on our genome assembly use the command below
 
 ```bash
-quast.py consesnus.fa
+quast.py consesnus.fasta
 ```
 
 
